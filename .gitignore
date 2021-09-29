@@ -1,4 +1,6 @@
 test/
 *.o
 *.a
-
+include/math
+include/matrix
+include/complex
