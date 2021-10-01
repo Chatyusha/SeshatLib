@@ -12,6 +12,7 @@ namespace Seshat {
         int row, column;
         Matrix(int row, int column);
         Matrix(int row, int column, T *init);
+        ~Matrix();
         Matrix<T> operator+(const Matrix<T> &a);
         Matrix<T> operator-(const Matrix<T> &a);
         Matrix<T> operator*(const Matrix<T> &a);

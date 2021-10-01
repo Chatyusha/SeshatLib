@@ -1,7 +1,6 @@
 CC = g++
 
-INCDIR = -I./include
-LIBDIR = -L./lib
+all: matrix complex math
 
 matrix:
 	cd ./src \
@@ -15,16 +14,15 @@ complex:
 	cd ./src \
 		&& make DIR=complex \
 		&& cd ../include \
-		&& ln -s ../src/complex complex \
+		&& if [ ! -h complex ];then ln -s ../src/complex complex ;fi\
 		&& cd ../lib \
-		&& ln -s ../src/complex/libcomplex.a libcomplex.a
+		&& if [ ! -h libcomplex.a ]; then ln -s ../src/complex/libcomplex.a libcomplex.a;fi
 
 math:
 	cd ./src \
 		&& make DIR=math \
 		&& cd ../include \
-		&& ln -s ../src/math math \
+		&& if [ ! -h math ];then ln -s ../src/math math ;fi\
 		&& cd ../lib \
-		&& ln -s ../src/math/libmath.a libmath.a
+		&& if [ ! -h libmath.a ]; then ln -s ../src/math/libmath.a libmath.a;fi
 
-all: matrix complex math

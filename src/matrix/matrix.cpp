@@ -43,7 +43,11 @@ namespace Seshat {
       this->column = column;
       this->matrix = init;
     }
-    
+    template<typename T>
+    Matrix<T>::~Matrix()
+    {
+    }
+
     template<typename T>
     Matrix<T> Matrix<T>::operator+(const Matrix<T> &a)
     {
