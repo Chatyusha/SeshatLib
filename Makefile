@@ -7,9 +7,9 @@ matrix:
 	cd ./src \
 		&& make DIR=matrix \
 		&& cd ../include \
-		&& ln -s ../src/matrix matrix \
+		&& if [ ! -h matrix ];then ln -s ../src/matrix matrix ;fi\
 		&& cd ../lib \
-		&& ln -s ../src/matrix/libmatrix.a libmatrix.a
+		&& if [ ! -h libmatrix.a ]; then ln -s ../src/matrix/libmatrix.a libmatrix.a;fi
 
 complex:
 	cd ./src \

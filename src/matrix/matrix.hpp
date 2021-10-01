@@ -17,7 +17,7 @@ namespace Seshat {
         Matrix<T> operator*(const Matrix<T> &a);
         Matrix<T> operator*(const T &a);
         
-        T* at(int a, int b);
+        T& at(int a, int b) const;
         std::string to_string();
 
     };
