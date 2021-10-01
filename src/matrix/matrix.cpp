@@ -22,11 +22,7 @@ namespace Seshat {
     {
       this->row = row;
       this->column = column;
-      this->matrix = new T*[row];
-      for (int i=0;i<row;i++)
-      {
-        this->matrix[i] = new T[column];
-      }
+      this->matrix = new T*[row*column];
     }
     
     template<typename T>
@@ -34,15 +30,7 @@ namespace Seshat {
     {
       this->row = row;
       this->column = column;
-      this->matrix = new T*[row];
-      for (int i=0;i<row;i++)
-      {
-        this->matrix[i] = new T[column];
-        for(int j=0;j<column;j++)
-        {
-          this->matrix[i][j] = init[column*i+j];
-        }
-      }
+      this->matrix = init;
     }
     
     template<typename T>
