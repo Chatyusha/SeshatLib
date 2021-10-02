@@ -4,6 +4,7 @@
 
 namespace Seshat {
   namespace Matrix {
+    //Begin{typed-declaration}
     template class Matrix<int>;
     template class Matrix<long>;
     template class Matrix<long long>;
@@ -24,7 +25,9 @@ namespace Seshat {
     template std::string Matrix<float>::to_string();
     template std::string Matrix<double>::to_string();
     template std::string Matrix<long double>::to_string();
-
+    //End{typed-declaration}
+    
+    //Begin{contents}
     template<typename T> Matrix<T>::Matrix(int row,int column)
     {
       this->row = row;
@@ -116,12 +119,12 @@ namespace Seshat {
       {
         for(int j=0;j<column;j++)
         {
-          S+=std::to_string(matrix[column*i+j])+", ";
+          S+=std::to_string(this->at(i,j))+", ";
         }
         S+="\n";
       }
       return S;
     }
-       
+    //End{contents} 
   }
 }

@@ -6,6 +6,7 @@
 
 namespace Seshat {
   namespace Matrix {
+    //Begin{class-declaration}
     template<typename T = float> class Matrix {
       public:
         T *matrix;
@@ -22,8 +23,7 @@ namespace Seshat {
         std::string to_string();
 
     };
-    template<typename T>
-    Matrix<T> dot(T &a, T &b);
+    //End{class-declaration}
   }
 }
 #endif /* MATRIX_HPP */
