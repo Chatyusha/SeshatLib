@@ -1,10 +1,11 @@
 #include "./matrix.hpp"
+#include <cstddef>
 #include <cstdio>
 #include <string>
 
 namespace Seshat {
   namespace Matrix {
-    //Begin{typed-declaration}
+
     template class Matrix<int>;
     template class Matrix<long>;
     template class Matrix<long long>;
@@ -25,18 +26,12 @@ namespace Seshat {
     template std::string Matrix<float>::to_string();
     template std::string Matrix<double>::to_string();
     template std::string Matrix<long double>::to_string();
-    //End{typed-declaration}
-    
-    //Begin{contents}
+
     template<typename T> Matrix<T>::Matrix(int row,int column)
     {
       this->row = row;
       this->column = column;
-      this->matrix = new T[row*column];
-      for(int i=0;i<row*column;i++)
-      {
-        matrix[i]=0;
-      }
+      this->matrix = new T[row*column]();
     }
     
     template<typename T>
@@ -44,11 +39,20 @@ namespace Seshat {
     {
       this->row = row;
       this->column = column;
-      this->matrix = init;
+      this->matrix = new T[row*column];
+      for (int i=0;i<row*column;i++)
+      {
+        matrix[i] = init[i];
+      }
     }
     template<typename T>
     Matrix<T>::~Matrix()
     {
+      if(matrix!=nullptr)
+      {
+        delete[] matrix;
+        matrix = nullptr;
+      }
     }
 
     template<typename T>
@@ -125,6 +129,6 @@ namespace Seshat {
       }
       return S;
     }
-    //End{contents} 
+
   }
 }
