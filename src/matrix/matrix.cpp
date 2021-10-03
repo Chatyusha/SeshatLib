@@ -24,6 +24,43 @@ namespace Seshat {
     template std::string Matrix<float>::to_string();
     template std::string Matrix<double>::to_string();
     template std::string Matrix<long double>::to_string();
+    
+    template Matrix<int> operator*(int l, const Matrix<int> &r);
+    template Matrix<long> operator*(int l, const Matrix<long> &r);
+    template Matrix<long long> operator*(int l, const Matrix<long long> &r);
+    template Matrix<float> operator*(int l, const Matrix<float> &r);
+    template Matrix<double> operator*(int l, const Matrix<double> &r);
+    template Matrix<long double> operator*(int l, const Matrix<long double> &r);
+    template Matrix<int> operator*(long l, const Matrix<int> &r);
+    template Matrix<long> operator*(long l, const Matrix<long> &r);
+    template Matrix<long long> operator*(long l, const Matrix<long long> &r);
+    template Matrix<float> operator*(long l, const Matrix<float> &r);
+    template Matrix<double> operator*(long l, const Matrix<double> &r);
+    template Matrix<long double> operator*(long l, const Matrix<long double> &r);
+    template Matrix<int> operator*(long long l, const Matrix<int> &r);
+    template Matrix<long> operator*(long long l, const Matrix<long> &r);
+    template Matrix<long long> operator*(long long l, const Matrix<long long> &r);
+    template Matrix<float> operator*(long long l, const Matrix<float> &r);
+    template Matrix<double> operator*(long long l, const Matrix<double> &r);
+    template Matrix<long double> operator*(long long l, const Matrix<long double> &r);  
+    template Matrix<int> operator*(float l, const Matrix<int> &r);
+    template Matrix<long> operator*(float l, const Matrix<long> &r);
+    template Matrix<long long> operator*(float l, const Matrix<long long> &r);
+    template Matrix<float> operator*(float l, const Matrix<float> &r);
+    template Matrix<double> operator*(float l, const Matrix<double> &r);
+    template Matrix<long double> operator*(float l, const Matrix<long double> &r);
+    template Matrix<int> operator*(double l, const Matrix<int> &r);
+    template Matrix<long> operator*(double l, const Matrix<long> &r);
+    template Matrix<long long> operator*(double l, const Matrix<long long> &r);
+    template Matrix<float> operator*(double l, const Matrix<float> &r);
+    template Matrix<double> operator*(double l, const Matrix<double> &r);
+    template Matrix<long double> operator*(double l, const Matrix<long double> &r);
+    template Matrix<int> operator*(long double l, const Matrix<int> &r);
+    template Matrix<long> operator*(long double l, const Matrix<long> &r);
+    template Matrix<long long> operator*(long double l, const Matrix<long long> &r);
+    template Matrix<float> operator*(long double l, const Matrix<float> &r);
+    template Matrix<double> operator*(long double l, const Matrix<double> &r);
+    template Matrix<long double> operator*(long double l, const Matrix<long double> &r);
 
     template<typename T> Matrix<T>::Matrix(int row,int column)
     {
@@ -95,19 +132,13 @@ namespace Seshat {
       }
       return M;
     }
-    template <typename T>
-    Matrix<T> Matrix<T>::operator*(const T &a)
-    {
-      Matrix<T> M(row,column);
-      for (int i=0; i<row;i++) {
-        for(int j=0;j<column;j++)
-        {
-          M.matrix[column*i+j] = matrix[column*i+j] * a;
-        }
-      }
-      return M;
-    }
     
+    template<typename T>
+    Matrix<T> Matrix<T>::operator=(const Matrix<T> &a)
+    {
+      return Matrix(row,column,matrix);
+    }
+
     template<typename T>
     T& Matrix<T>::at(int a,int b) const
     {
@@ -128,5 +159,18 @@ namespace Seshat {
       return S;
     }
 
+    template<typename T, typename U>
+    Matrix<T> operator*(U l,const Matrix<T> &r)
+    {
+      Matrix<T> M(r.row,r.column);
+      for(int i=0;i<M.row;i++)
+      {
+        for(int j=0;j<M.column;j++)
+        {
+          M.at(i,j) = l * r.at(i,j);
+        }
+      }
+      return M; 
+    }
   }
 }
