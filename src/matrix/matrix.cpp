@@ -1,6 +1,4 @@
 #include "./matrix.hpp"
-#include <cstddef>
-#include <cstdio>
 #include <string>
 
 namespace Seshat {
