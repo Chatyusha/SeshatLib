@@ -13,17 +13,22 @@ namespace Seshat {
         Matrix(int row, int column);
         Matrix(int row, int column, T *init);
         ~Matrix();
-        Matrix<T> operator+(const Matrix<T> &a);
-        Matrix<T> operator-(const Matrix<T> &a);
-        Matrix<T> operator*(const Matrix<T> &a);
-        Matrix<T> operator=(const Matrix<T> &a);
         
         T& at(int a, int b) const;
         std::string to_string();
+        Matrix<T> &operator=(const Matrix<T> &r);
 
     };
     template<typename T, typename U>
-    Matrix<T> operator*(U l, const Matrix<T> &r);
+    Matrix<T> operator*(const U &l, const Matrix<T> &r);
+    template<typename T>
+    Matrix<T> operator*(const Matrix<T> &l, const Matrix<T> &r);
+    template<typename T>
+    Matrix<T> operator+(const Matrix<T> &l, const Matrix<T> &r);
+    template<typename T>
+    Matrix<T> operator-(const Matrix<T> &l, const Matrix<T> &r);
+    template<typename T>
+    Matrix<T> operator-(const Matrix<T> &l, const Matrix<T> &r);
   }
 }
 #endif /* MATRIX_HPP */
