@@ -30,16 +30,16 @@ namespace Seshat {
     Vector2<T> operator/(const Vector2<T> &l, const U &r);
 
     template<typename T>
-    T dot(const Vector2<T> &l,const Vector2<T> &r);
+    T dot(const Vector2<T> &a,const Vector2<T> &b);
 
     template<typename T>
-    T cross(const Vector2<T> &l,const Vector2<T> &r);
+    T cross(const Vector2<T> &a,const Vector2<T> &b);
 
     template<typename T>
-    double angle(const Vector2<T> &l,const Vector2<T> &r);
+    double angle(const Vector2<T> &a,const Vector2<T> &b);
 
     template<typename T>
-    float anglef(const Vector2<T> &l, const Vector2<T> &r);
+    float anglef(const Vector2<T> &a, const Vector2<T> &b);
   }
 }
 

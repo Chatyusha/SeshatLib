@@ -1,5 +1,7 @@
 #include "vector2.hpp"
 #include <cmath>
+#include <cstdio>
+#include <math.h>
 #include <string>
 
 namespace Seshat {
@@ -12,12 +14,12 @@ namespace Seshat {
     template class Vector2<double>;
     template class Vector2<long double>;
 
-    template double Vector2<int>::size();
-    template double Vector2<long>::size();
-    template double Vector2<long long>::size();
-    template double Vector2<float>::size();
-    template double Vector2<double>::size();
-    template double Vector2<long double>::size();
+    template  double Vector2<int>::size();
+    template  double Vector2<long>::size();
+    template  double Vector2<long long>::size();
+    template  double Vector2<float>::size();
+    template  double Vector2<double>::size();
+    template  double Vector2<long double>::size();
 
     template std::string Vector2<int>::to_string();
     template std::string Vector2<long>::to_string();
@@ -26,12 +28,19 @@ namespace Seshat {
     template std::string Vector2<double>::to_string();
     template std::string Vector2<long double>::to_string();
 
-    template int dot(const Vector2<int> &l, const Vector2<int> &r);
-    template long dot(const Vector2<long> &l, const Vector2<long> &r);
-    template long long dot(const Vector2<long long> &l, const Vector2<long long> &r);
-    template float dot(const Vector2<float> &l, const Vector2<float> &r);
-    template double dot(const Vector2<double> &l, const Vector2<double> &r);
-    template long double dot(const Vector2<long double> &l, const Vector2<long double> &r);
+    template int dot(const Vector2<int> &a, const Vector2<int> &b);
+    template long dot(const Vector2<long> &a, const Vector2<long> &b);
+    template long long dot(const Vector2<long long> &a, const Vector2<long long> &b);
+    template float dot(const Vector2<float> &a, const Vector2<float> &b);
+    template double dot(const Vector2<double> &a, const Vector2<double> &b);
+    template long double dot(const Vector2<long double> &a, const Vector2<long double> &b);
+
+    template double angle(const Vector2<int> &a, const Vector2<int> &b);
+    template double angle(const Vector2<long> &a, const Vector2<long> &b);
+    template double angle(const Vector2<long long> &a, const Vector2<long long> &b);
+    template double angle(const Vector2<float> &a, const Vector2<float> &b);
+    template double angle(const Vector2<double> &a, const Vector2<double> &b);
+    template double angle(const Vector2<long double> &a, const Vector2<long double> &b);
 
     template Vector2<int> operator+(const Vector2<int> &r, const Vector2<int> &l);
     template Vector2<long> operator+(const Vector2<long> &r, const Vector2<long> &l);
@@ -168,7 +177,7 @@ namespace Seshat {
     template<typename T>
     double Vector2<T>::size()
     {
-       return sqrt(this->x*this->x + this->y*this->y);
+      return std::sqrt(x*x + y*y);
     }
 
     template<typename T>
@@ -208,10 +217,20 @@ namespace Seshat {
     }
 
     template<typename T>
-    T dot(const Vector2<T> &l, const Vector2<T> &r)
+    T dot(const Vector2<T> &a, const Vector2<T> &b)
     {
-      return l.x*r.x + l.y*r.y;
+      return a.x*b.x + a.y*b.y;
     }
-
+    template<typename T>
+    T cross(const Vector2<T> &a, const Vector2<T> &b)
+    {
+      return a.x*b.y - a.y*b.x;
+    }
+    
+    template<typename T>
+    double angle(const Vector2<T> &a, const Vector2<T> &b)
+    {
+      return acos(dot(a,b)/ (sqrt(a.x*a.x+a.y*a.y) * sqrt(b.x*b.x+b.y*b.y)));
+    }
   }
 }
