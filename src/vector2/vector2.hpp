@@ -24,6 +24,10 @@ namespace Seshat {
     Vector2<T> operator-(const Vector2<T> &l, const Vector2<T> &r);
     template<typename T,typename U>
     Vector2<U> operator*(const T &l, const Vector2<U> &r);
+    template<typename T, typename U>
+    Vector2<T> operator*(const Vector2<T> &l, const U &r);
+    template<typename T, typename U>
+    Vector2<T> operator/(const Vector2<T> &l, const U &r);
 
     template<typename T>
     T dot(const Vector2<T> &l,const Vector2<T> &r);
