@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cmath>
 #include <string>
+#include <math.h>
 
 namespace Seshat {
   namespace Vector2 {
@@ -14,7 +15,12 @@ namespace Seshat {
         T y;
         Vector2(T x = 0.0,T y = 0.0);
 
+        operator double() const;
+
         double size();
+        Vector2<double> normlize();
+        Vector2<long double> normlizel();
+        Vector2<float> normlizef();
         std::string to_string();
     };
     
