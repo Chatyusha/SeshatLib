@@ -128,7 +128,6 @@ namespace Seshat {
     template Vector2<long double> operator*(const Vector2<long double> &l, const double &r);
     template Vector2<long double> operator*(const Vector2<long double> &l, const long double &r);
 
-
     template<typename T>
     Vector2<T> operator+(const Vector2<T> &l, const Vector2<T> &r)
     {
@@ -159,10 +158,5 @@ namespace Seshat {
       return Vector2<T>(l.x/r,l.y/r);
     }
     
-    template<typename T>
-    Vector2<T>::operator double() const
-    {
-      return Vector2<double>((double)x, (double)y); 
-    }
   }
 }

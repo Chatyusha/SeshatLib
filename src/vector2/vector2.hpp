@@ -15,12 +15,10 @@ namespace Seshat {
         T y;
         Vector2(T x = 0.0,T y = 0.0);
 
-        operator double() const;
-
         double size();
-        Vector2<double> normlize();
-        Vector2<long double> normlizel();
-        Vector2<float> normlizef();
+        Vector2<double> normalize();
+        Vector2<long double> normalizel();
+        Vector2<float> normalizef();
         std::string to_string();
     };
     

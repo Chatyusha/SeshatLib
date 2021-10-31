@@ -1,4 +1,5 @@
 CC=g++
+
 OPTIONS = -c -Wall -O2
 
 LIBNAME = vector2

@@ -37,7 +37,13 @@ namespace Seshat {
     template double angle(const Vector2<float> &a, const Vector2<float> &b);
     template double angle(const Vector2<double> &a, const Vector2<double> &b);
     template double angle(const Vector2<long double> &a, const Vector2<long double> &b);
-
+    
+    template Vector2<double> Vector2<int>::normalize();
+    template Vector2<double> Vector2<long>::normalize();
+    template Vector2<double> Vector2<long long>::normalize();
+    template Vector2<double> Vector2<float>::normalize();
+    template Vector2<double> Vector2<double>::normalize();
+    template Vector2<double> Vector2<long double>::normalize();
 
     template<typename T>
     Vector2<T>::Vector2(T x,T y)
@@ -53,7 +59,7 @@ namespace Seshat {
     }
     
     template <typename T>
-    Vector2<double> Vector2<T>::normlize()
+    Vector2<double> Vector2<T>::normalize()
     {
       return Vector2<double>((double)x/size(),(double)y/size());
     }
@@ -79,6 +85,12 @@ namespace Seshat {
     double angle(const Vector2<T> &a, const Vector2<T> &b)
     {
       return acos(dot(a,b)/ (sqrt(a.x*a.x+a.y*a.y) * sqrt(b.x*b.x+b.y*b.y)));
+    }
+
+    template<typename T>
+    float anglef(const Vector2<T> &a, const Vector2<T> &b)
+    {
+      return (float)acos(dot(a,b)/ (sqrt(a.x*a.x+a.y*a.y) * sqrt(b.x*b.x+b.y*b.y)));
     }
   }
 }

@@ -1,5 +1,7 @@
 CC = g++
 
+PROJECT_ROOT = $(shell pwd)
+
 all: matrix complex math
 
 matrix:
@@ -27,9 +29,13 @@ math:
 		&& if [ ! -h libmath.a ]; then ln -s ../src/math/libmath.a libmath.a;fi
 
 vector2:
-	cd ./src \
-		&& make DIR=vector2 \
-		&& cd ../include \
+	cd ./src/vector2 \
+		&& make \
+		&& cd $(PROJECT_ROOT)/include \
 		&& if [ ! -h vector2 ];then ln -s ../src/vector2 vector2 ;fi\
-		&& cd ../lib \
+		&& cd $(PROJECT_ROOT)/lib \
 		&& if [ ! -h libvector2.a ]; then ln -s ../src/vector2/libvector2.a libvector2.a;fi
+
+clean_vector2:
+	cd ./src/vector2 \
+		&& rm *.a *.o
